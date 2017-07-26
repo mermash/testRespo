@@ -1,0 +1,18 @@
+
+If you use win7 and virtualBox and you have problem with long path in Windows.
+
+virtualBox's ticket -  https://www.virtualbox.org/ticket/14651
+msdn's description - https://msdn.microsoft.com/en-us/library/aa365247(VS.85).aspx
+
+
+You can use long path with this method.
+
+You have to add sharefolders (use hostpath starting with "\\?\") and start virtual machine by VBoxManager.
+
+Like this:
+
+cd W:\ProgramFilesW\Oracle\VirtualBox5.1.22
+
+VBoxManage.exe sharedfolder add "W:\VirtualBox Vms\UbuntuVBox\UbuntuVBox.vbox" --name "hosting" --hostpath "\\?\W:\sharedFolder\home\share\webhome"
+
+VBoxManage.exe startvm "UbuntuVBox"

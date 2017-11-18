@@ -1,0 +1,50 @@
+install for ubuntu 14.04
+
+
+
+sudo apt-get install memcached
+
+install extensions for php
+
+sudo apt-get update
+sudo apt-get install php-memcached
+
+
+check installations
+
+ps -aux | grep memcached
+
+php -i | grep memcached
+
+settings for swith saving session to memcached
+
+php.ini
+
+session.save_handler = memcached
+session.save_path = "127.0.0.1:11211" - if memcached is working on machine where your web-server is located
+
+last:
+service apache2 restart
+or
+service php-fpm restart
+
+-------------------
+monitorig
+nc 127.0.0.1 11211
+stats items
+stats slabs
+stats cachedump "slab id" "count show items"
+--------------------
+monitoring real-time
+
+sudo apt-get install ngrep
+
+ngrep -W none -T -d any "^(get|set|delete|END|STORED|VALUE|DELETED)" port 11211
+
+
+--------------
+sources:
+http://blog.alaruss.com/2010/06/memcache.html
+http://linux-notes.org/rabota-s-memcached-v-unix-linux/
+https://ruhighload.com/post/Php+memcache+sessions
+http://salf-net.ru/?p=2444

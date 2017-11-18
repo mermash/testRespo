@@ -11,7 +11,7 @@ check working of the redis-server
 redis-cli -h 127.0.0.1
 127.0.0.1:6379> ping
 
-you should get answer: "PONG"
+you should get the answer: "PONG"
 
 redis settings is located: /etc/redis/redis.conf
 
@@ -21,7 +21,7 @@ sudo apt-get install php-redis
 
 check: php -i | grep 'redis'
 
-settings for session handler^
+settings for session handler:
 edit php.ini file:
 
 session.save_handler = redis
@@ -30,7 +30,8 @@ session.save_path = "127.0.0.1:6379"
 and restart:
 
 service apache2 restart
-or sevice php-fmp restart
+or
+service php-fmp restart
 
 check that sessions use redis
 
@@ -44,6 +45,12 @@ you can something like:
 
 your session is storing in redis
 
+
+----------------------
+sources:
+
+https://www.8host.com/blog/obrabotka-sessij-php-pri-pomoshhi-servera-redis-v-ubuntu-14-04/
+http://eax.me/redis/
 
 
 
